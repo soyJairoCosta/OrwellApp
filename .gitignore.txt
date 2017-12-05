@@ -1,4 +1,5 @@
 node_modules
+credentials.ts
 www
 .tmp
 .sass-cache
