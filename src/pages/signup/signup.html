@@ -10,6 +10,26 @@
   <img src="assets/img/banner.jpg" />
   <form [formGroup]="signupForm" (submit)="signupUser()" novalidate>
     <ion-item>
+      <ion-label stacked>Name</ion-label>
+      <ion-input formControlName="name" type="text" placeholder="Your name">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Surname</ion-label>
+      <ion-input formControlName="surname" type="text" placeholder="Your surname">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Institution or company</ion-label>
+      <ion-input formControlName="institution" type="text" placeholder="i.e: IBIS">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>City</ion-label>
+      <ion-input formControlName="city" type="text" placeholder="Your city">
+      </ion-input>
+    </ion-item>
+    <ion-item>
       <ion-label stacked>Email</ion-label>
       <ion-input formControlName="email" type="email" placeholder="Your email address" [class.invalid]="!signupForm.controls.email.valid && blur">
       </ion-input>

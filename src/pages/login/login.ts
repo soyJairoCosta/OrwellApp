@@ -47,7 +47,7 @@ export class LoginPage {
         console.log(
           `Form is not valid yet, current value: ${this.loginForm.value}`
         );
-      } else {
+      }else{
         const email = this.loginForm.value.email;
         const password = this.loginForm.value.password;
 
@@ -71,6 +71,49 @@ export class LoginPage {
         this.loading.present();
       }
     }
+
+  //   loginUser2(): void {
+  //     if (!this.loginForm.valid) {
+  //       console.log(
+  //         `Form is not valid yet, current value: ${this.loginForm.value}`
+  //       );
+  //     } else {
+  //       const email = this.loginForm.value.email;
+  //       const password = this.loginForm.value.password;
+  //       this.authProvider.checkActiveUser(email).then(
+  //         active => {
+  //             if(active){
+  //                 this.authProvider.loginUser(email, password).then(
+  //                       authData => {
+  //                             this.loading.dismiss().then(() => {
+  //                               this.navCtrl.setRoot(HomePage);
+  //                             });
+  //                       },
+  //                       error => {
+  //                             this.loading.dismiss().then(() => {
+  //                               const alert: Alert = this.alertCtrl.create({
+  //                                 message: error.message,
+  //                                 buttons: [{ text: 'Ok', role: 'cancel' }]
+  //                               });
+  //                               alert.present();
+  //                             });
+  //                           });
+  //             }else{
+  //                 this.loading.dismiss().then(() => {
+  //                   const alert: Alert = this.alertCtrl.create({
+  //                     message: "Account not activated yet. \n Please mail the admin",
+  //                     buttons: [{ text: 'Ok', role: 'cancel' }]
+  //                   });
+  //                   alert.present();
+  //                 });
+  //             }
+  //         });
+  //       this.loading = this.loadingCtrl.create();
+  //       this.loading.present();;
+  //   }
+  // }
+
+    //Goes to SignUpPage
     goToSignup(): void {
       this.navCtrl.push('SignupPage');
     }
