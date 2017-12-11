@@ -29,6 +29,18 @@ export class SignupPage {
     formBuilder: FormBuilder
   ) {
     this.signupForm = formBuilder.group({
+      name: [
+        ""
+      ],
+      surname: [
+        ""
+      ],
+      city: [
+        ""
+      ],
+      institution: [
+        ""
+      ],
       email: [
         "",
         Validators.compose([Validators.required, EmailValidator.isValid])
@@ -46,13 +58,17 @@ export class SignupPage {
         `Need to complete the form, current value: ${this.signupForm.value}`
       );
     } else {
+      const name: string = this.signupForm.value.name;
+      const surname: string = this.signupForm.value.surname;
+      const city: string = this.signupForm.value.city;
+      const institution: string = this.signupForm.value.institution;
       const email: string = this.signupForm.value.email;
       const password: string = this.signupForm.value.password;
 
-      this.authProvider.signupUser(email, password).then(
+      this.authProvider.signupUser(email, password, name, surname, city, institution).then(
         user => {
           this.loading.dismiss().then(() => {
-            this.navCtrl.setRoot(HomePage);
+            //this.navCtrl.setRoot(HomePage);
           });
         },
         error => {
