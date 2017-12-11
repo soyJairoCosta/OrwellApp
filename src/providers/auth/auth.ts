@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import firebase from 'firebase';
 
+
 @Injectable()
 export class AuthProvider {
 
@@ -26,7 +27,7 @@ export class AuthProvider {
   loginUser(email: string, password: string): Promise<any> {
       return firebase.auth().signInWithEmailAndPassword(email, password);
     }
-    
+
 
     logoutUser(): Promise<void> {
       const emailOff: string = this.correctedEmail(firebase.auth().currentUser.email);

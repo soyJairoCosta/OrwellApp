@@ -23,6 +23,7 @@ export class LoginPage {
   public loginForm: FormGroup;
   public loading: Loading;
 
+
   constructor(
       public navCtrl: NavController,
       public loadingCtrl: LoadingController,

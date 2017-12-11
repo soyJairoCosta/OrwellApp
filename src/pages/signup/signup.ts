@@ -51,6 +51,7 @@ export class SignupPage {
       ]
     });
   }
+  
 
   signupUser(): void {
     if (!this.signupForm.valid) {
