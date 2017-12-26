@@ -1,3 +1,20 @@
 page-login {
+.main_layer{
+  position:absolute;
+   left: 0;
+   right: 0;
+   margin:0 auto;
+   top:50%;
+   transform:translateY(-50%);
+}
+.main_logo{
+  width: 50%;
+  margin: auto;
+  display: block;
+  contain: none;
+  img{
+    width: 100%;
 
+  }
+}
 }
