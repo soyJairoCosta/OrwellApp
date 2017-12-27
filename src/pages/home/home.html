@@ -8,11 +8,18 @@
 </ion-header>
 
 <ion-content padding>
-  <h3>Ionic Menu Starter</h3>
+  <ion-fab right bottom>
+    <button ion-fab color="danger"><ion-icon name="arrow-dropleft"></ion-icon></button>
+    <ion-fab-list side="left">
+      <button ion-fab color="remove_button"><ion-icon name="remove"></ion-icon></button>
+      <button ion-fab color="add_button"><ion-icon name="add" color="green"></ion-icon></button>
+    </ion-fab-list>
+  </ion-fab>
 
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
+  <ion-list>
+    <button ion-item *ngFor="let IP of IPs" (click)="itemSelected(item)">
+      {{ IP }}
+    </button>
+  </ion-list>
 
-  <button ion-button secondary menuToggle>Toggle Menu</button>
 </ion-content>

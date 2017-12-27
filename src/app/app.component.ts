@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+import { ProfilePage } from '../pages/profile/profile';
 
 
 import firebase from 'firebase';
@@ -42,7 +43,8 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Inicio', component: HomePage },
-      { title: 'Lista de clusters', component: ListPage }
+      { title: 'Lista de clusters', component: ListPage },
+      { title: 'Perfil', component: ProfilePage }
     ];
 
   }
@@ -59,7 +61,7 @@ export class MyApp {
   }
 
   openPage(page) {
-    this.nav.setRoot(page.component);
+    this.nav.push(page.component);
   }
   logoutUser(){
     this.authProvider.logoutUser().then(() => {

@@ -8,22 +8,6 @@ export class AuthProvider {
   constructor() {
   }
 
-  // checkActiveUser(email:string){
-  //   const searchEmail = this.correctedEmail(email);
-  //   console.log("mail: " + searchEmail);
-  //   var ref = firebase.database().ref(`/users/`+searchEmail+`/active`);
-  //   ref.on("value", function(snapshot) {
-  //   console.log(snapshot.val());
-  //     if(snapshot.val() == true ){
-  //       console.log("Yes");
-  //         return new Promise((resolve, error) => resolve(true));
-  //       }
-  //     });
-  //   console.log("Nope");
-  //   return new Promise((resolve, error) => resolve(false));
-  //
-  // }
-
   loginUser(email: string, password: string): Promise<any> {
       return firebase.auth().signInWithEmailAndPassword(email, password);
     }
