@@ -1,3 +1,5 @@
+// Support class for main IP menu. Also helps with the database storage
+
 export class Ips{
   ip: string;
   name:string;

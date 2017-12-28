@@ -14,6 +14,8 @@ import { ProfileProvider } from '../providers/profile/profile';
 
 import { IPValidator } from "../validators/ip";
 
+import { IonicStorageModule } from '@ionic/storage';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -25,6 +27,10 @@ import { IPValidator } from "../validators/ip";
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot({
+      name: '__mydb',
+         driverOrder: ['indexeddb', 'sqlite', 'websql']
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [

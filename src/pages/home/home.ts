@@ -15,8 +15,8 @@ import { ProfileProvider } from '../../providers/profile/profile';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  public userProfile: any;
-  public IPs: any;
+  public userProfile: any;  //userProfile with mail. Credentials provided by firebase.
+  public IPs: any; 
   public IPST: any;
 
   constructor(

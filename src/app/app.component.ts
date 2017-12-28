@@ -10,7 +10,7 @@ import { ProfilePage } from '../pages/profile/profile';
 
 import firebase from 'firebase';
 import { FIREBASE_CREDENTIALS } from './credentials';
-// Firebase initializing
+
 import { AuthProvider } from '../providers/auth/auth';
 
 @Component({
@@ -30,6 +30,7 @@ export class MyApp {
 
     firebase.initializeApp(FIREBASE_CREDENTIALS);
 
+    //If the user is not logged, the system guide him to LoginPage.
     const unsubscribe = firebase.auth().onAuthStateChanged(user => {
       if (!user) {
         this.rootPage = 'LoginPage';
@@ -42,8 +43,6 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Inicio', component: HomePage },
-      { title: 'Lista de clusters', component: ListPage },
       { title: 'Perfil', component: ProfilePage }
     ];
 
@@ -51,8 +50,6 @@ export class MyApp {
 
   initializeApp() {
     this.platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
 
@@ -63,6 +60,7 @@ export class MyApp {
   openPage(page) {
     this.nav.push(page.component);
   }
+
   logoutUser(){
     this.authProvider.logoutUser().then(() => {
       this.nav.setRoot('LoginPage');

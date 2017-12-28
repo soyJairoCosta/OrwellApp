@@ -11,6 +11,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EmailValidator } from '../../validators/email';
 import { AuthProvider } from '../../providers/auth/auth';
 import { HomePage } from '../home/home';
+import { Storage } from '@ionic/storage';
 
 
 
@@ -20,8 +21,8 @@ import { HomePage } from '../home/home';
   templateUrl: 'login.html',
 })
 export class LoginPage {
-  public loginForm: FormGroup;
-  public loading: Loading;
+  public loginForm: FormGroup;  //Login form
+  public loading: Loading;      //Loading spinner
 
 
   constructor(
@@ -29,8 +30,11 @@ export class LoginPage {
       public loadingCtrl: LoadingController,
       public alertCtrl: AlertController,
       public authProvider: AuthProvider,
-      formBuilder: FormBuilder
+      public formBuilder: FormBuilder,
+      public storage: Storage
     ) {
+
+      // Create the form and also validate the email and the password
       this.loginForm = formBuilder.group({
         email: [
           '',
@@ -43,6 +47,7 @@ export class LoginPage {
       });
     }
 
+    // Log the user in the system checking if the user exist in the firebase DB
     loginUser(): void {
       if (!this.loginForm.valid) {
         console.log(
@@ -51,10 +56,11 @@ export class LoginPage {
       }else{
         const email = this.loginForm.value.email;
         const password = this.loginForm.value.password;
-
+        // Ask the provider to log the user using email and password
         this.authProvider.loginUser(email, password).then(
           authData => {
             this.loading.dismiss().then(() => {
+              this.storage.set('email', email);
               this.navCtrl.setRoot('MainPage');
             });
           },

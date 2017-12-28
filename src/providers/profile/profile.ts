@@ -4,6 +4,7 @@ import firebase from 'firebase';
 @Injectable()
 export class ProfileProvider {
   public userProfile: firebase.database.Reference;
+  public userIpProfile: firebase.database.Reference;
   public currentUser: firebase.User;
   public ips: string;
 
@@ -12,6 +13,8 @@ export class ProfileProvider {
       if (user) {
         this.currentUser = user;
         this.userProfile = firebase.database().ref(`/users/${this.correctedEmail(user.email)}`);
+        this.userIpProfile = firebase.database().ref(`/users/${this.correctedEmail(user.email)}/IPs/`);
+        console.log("Constructor");
         }
     });
 
@@ -21,7 +24,8 @@ export class ProfileProvider {
     return this.userProfile;
   }
   getUserIPs(): firebase.database.Reference{
-    return firebase.database().ref(`/users/${this.correctedEmail(this.currentUser.email)}/IPs/`);
+    return this.userIpProfile;
+    console.log("getUserIp");
   }
 
   updateName(name: string, surname: string): Promise<any> {
