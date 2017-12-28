@@ -5,18 +5,23 @@ import firebase from 'firebase';
 export class ProfileProvider {
   public userProfile: firebase.database.Reference;
   public currentUser: firebase.User;
+  public ips: string;
 
   constructor() {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         this.currentUser = user;
         this.userProfile = firebase.database().ref(`/users/${this.correctedEmail(user.email)}`);
-      }
+        }
     });
+
   }
 
   getUserProfile(): firebase.database.Reference {
     return this.userProfile;
+  }
+  getUserIPs(): firebase.database.Reference{
+    return firebase.database().ref(`/users/${this.correctedEmail(this.currentUser.email)}/IPs/`);
   }
 
   updateName(name: string, surname: string): Promise<any> {
@@ -65,6 +70,34 @@ export class ProfileProvider {
       });
   }
   correctedEmail(email:string): string{
-    return email.replace(".", "-").toLowerCase();
+    return email.replace(/\./g, "-").toLowerCase();
+  }
+
+  addIP(ip:string, name: string, institution: string, extra: string): Promise<any>{
+    //return this.userProfile.update({ ips });
+    return firebase
+      .database().ref(`/users/${this.correctedEmail(this.currentUser.email)}/IPs/${(ip).replace(/\./g, "-")}`).set({
+        name: name,
+        institution: institution,
+        extra: extra
+        //active: false
+      });
+  }
+
+  editIP(ip:string, name: string, institution: string, extra: string): Promise<any>{
+    //return this.userProfile.update({ ips });
+    return firebase
+      .database().ref(`/users/${this.correctedEmail(this.currentUser.email)}/IPs/${(ip).replace(/\./g, "-")}`).update({
+        name: name,
+        institution: institution,
+        extra: extra
+        //active: false
+      });
+  }
+
+  deleteIP(ip:string): Promise<any>{
+    console.log(ip);
+    return firebase
+      .database().ref(`/users/${this.correctedEmail(this.currentUser.email)}/IPs/${(ip).replace(/\./g, "-")}`).remove();
   }
 }

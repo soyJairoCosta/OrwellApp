@@ -11,13 +11,13 @@
   <ion-fab right bottom>
     <button ion-fab color="danger"><ion-icon name="arrow-dropleft"></ion-icon></button>
     <ion-fab-list side="left">
-      <button ion-fab color="remove_button"><ion-icon name="remove"></ion-icon></button>
-      <button ion-fab color="add_button"><ion-icon name="add" color="green"></ion-icon></button>
+      <button ion-fab color="remove_button" (click)="test()"><ion-icon name="remove"></ion-icon></button>
+      <button ion-fab color="add_button" (click)="addIP()"><ion-icon name="add" color="green"></ion-icon></button>
     </ion-fab-list>
   </ion-fab>
 
   <ion-list>
-    <button ion-item *ngFor="let IP of IPs" (click)="itemSelected(item)">
+    <button ion-item *ngFor="let IP of IPST" (click)="itemSelected(item)">
       {{ IP }}
     </button>
   </ion-list>

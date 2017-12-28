@@ -19,7 +19,7 @@ import { AuthProvider } from '../providers/auth/auth';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = 'MainPage';
 
   pages: Array<{title: string, component: any}>;
 
@@ -35,7 +35,7 @@ export class MyApp {
         this.rootPage = 'LoginPage';
         unsubscribe();
       } else {
-        this.rootPage = HomePage;
+        this.rootPage = 'MainPage';
         unsubscribe();
       }
     });

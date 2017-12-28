@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-fab right bottom>
+    <button ion-fab color="danger"><ion-icon name="arrow-dropleft"></ion-icon></button>
+    <ion-fab-list side="left">
+      <button ion-fab color="remove_button"(click)="showDeleteIcons()"><ion-icon name="remove"></ion-icon></button>
+      <button ion-fab color="add_button" (click)="addIP()"><ion-icon name="add" color="green"></ion-icon></button>
+    </ion-fab-list>
+  </ion-fab>
+
+
+
+  <ion-list>
+      <ion-item-sliding *ngFor="let ip of IPs; let i = index">
+        <ion-item (press)="pressEvent(ip, i)">
+        <ion-card>
+
+          <h2>{{ ip.name }}</h2>
+          <p>{{ ip.ip }}</p>
+
+           <ion-fab right top  *ngIf="hided">
+             <button ion-button small icon-only clear (click)="eliminarIP(ip,i)"><ion-icon name="remove-circle"></ion-icon></button>
+          </ion-fab>
+
+              <ion-card-content>
+                {{ ip.extra }}
+              </ion-card-content>
+
+        </ion-card>
+        </ion-item>
+      </ion-item-sliding>
+    </ion-list>
+
+
+</ion-content>

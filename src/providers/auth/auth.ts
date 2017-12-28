@@ -6,6 +6,7 @@ import firebase from 'firebase';
 export class AuthProvider {
 
   constructor() {
+
   }
 
   loginUser(email: string, password: string): Promise<any> {
@@ -40,7 +41,8 @@ export class AuthProvider {
             surname: surname,
             email: email,
             city: city,
-            institution: institution
+            institution: institution,
+            ips: "none"
             //active: false
           });
       })

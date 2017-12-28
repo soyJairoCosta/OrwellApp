@@ -55,7 +55,7 @@ export class LoginPage {
         this.authProvider.loginUser(email, password).then(
           authData => {
             this.loading.dismiss().then(() => {
-              this.navCtrl.setRoot(HomePage);
+              this.navCtrl.setRoot('MainPage');
             });
           },
           error => {

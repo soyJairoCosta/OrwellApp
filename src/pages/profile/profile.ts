@@ -23,13 +23,16 @@ export class ProfilePage {
     public alertCtrl: AlertController,
     public authProvider: AuthProvider,
     public profileProvider: ProfileProvider
-  ) {}
+  ) {
+
+  }
 
   ionViewDidLoad() {
     this.profileProvider.getUserProfile().on('value', userProfileSnapshot => {
       this.userProfile = userProfileSnapshot.val();
       this.city = userProfileSnapshot.val().city;
       this.institution = userProfileSnapshot.val().institution;
+      
     });
   }
 
@@ -59,7 +62,6 @@ export class ProfilePage {
         {
           text: 'Save',
           handler: data => {
-            console.log("Test0: "+data.name);
             this.profileProvider.updateName(data.name, data.surname);
           }
         }
