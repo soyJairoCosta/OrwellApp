@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import firebase from 'firebase';
 
+
 @Injectable()
 export class ProfileProvider {
   public userProfile: firebase.database.Reference;
@@ -24,8 +25,8 @@ export class ProfileProvider {
     return this.userProfile;
   }
   getUserIPs(): firebase.database.Reference{
-    return this.userIpProfile;
     console.log("getUserIp");
+    return this.userIpProfile;
   }
 
   updateName(name: string, surname: string): Promise<any> {

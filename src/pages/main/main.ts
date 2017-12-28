@@ -36,7 +36,9 @@ export class MainPage {
 
   // Loads the IP list that the user has stored in the firebase DB once the page is fully loaded.
   // This way, all the elements are created and the profileProvider has all the elements connected.
-  ionViewDidEnter()
+  ionViewDidEnter(){
+    //this.profileProvider = new ProfileProvider();
+
     //Gets the reference to the firebaseDB
     this.profileProvider.getUserIPs().on('value', userProfileSnapshot => {
       this.userProfile = userProfileSnapshot.val();
